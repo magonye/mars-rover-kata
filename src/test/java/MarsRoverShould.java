@@ -22,4 +22,16 @@ public class MarsRoverShould {
         assertThat(marsRover.move(commands), is(finalPosition));
     }
 
+    @Test
+    @Parameters({
+            "R, 0:0:E",
+            "RR, 0:0:S",
+            "RRR, 0:0:W",
+            "RRRRRRRRRRRR, 0:0:N"
+    })
+    public void turn_right(String commands, String finalPosition) {
+        MarsRover marsRover = new MarsRover(0,0,'N');
+        assertThat(marsRover.move(commands), is(finalPosition));
+    }
+
 }

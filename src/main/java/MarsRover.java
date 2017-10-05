@@ -6,12 +6,30 @@ public class MarsRover {
 
     public String move(String commands) {
         for(char command: commands.toCharArray()){
-            direction = turn();
+            if (command=='L') {
+                direction = turn_left();
+            }
+            if (command=='R') {
+                direction = turn_right();
+            }
         }
         return "0:0:"+ direction;
     }
 
-    private char turn() {
+    private char turn_right() {
+        if (direction == 'N'){
+            return 'E';
+        }
+        if (direction == 'W'){
+            return 'N';
+        }
+        if (direction == 'S'){
+            return 'W';
+        }
+        return 'S';
+    }
+
+    private char turn_left() {
         if (direction == 'N'){
             return 'W';
         }
