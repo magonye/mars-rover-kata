@@ -1,6 +1,7 @@
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -10,6 +11,14 @@ import static org.junit.Assert.assertThat;
 @RunWith(JUnitParamsRunner.class)
 public class MarsRoverShould {
 
+    private MarsRover marsRover;
+
+
+    @Before
+    public void before(){
+        marsRover = new MarsRover(0,0,'N');
+    }
+
     @Test
     @Parameters({
             "L, 0:0:W",
@@ -18,7 +27,6 @@ public class MarsRoverShould {
             "LLLLLLLLLLLL, 0:0:N"
     })
     public void turn_left(String commands, String finalPosition) {
-        MarsRover marsRover = new MarsRover(0,0,'N');
         assertThat(marsRover.move(commands), is(finalPosition));
     }
 
@@ -30,7 +38,6 @@ public class MarsRoverShould {
             "RRRRRRRRRRRR, 0:0:N"
     })
     public void turn_right(String commands, String finalPosition) {
-        MarsRover marsRover = new MarsRover(0,0,'N');
         assertThat(marsRover.move(commands), is(finalPosition));
     }
 

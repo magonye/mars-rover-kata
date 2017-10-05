@@ -1,5 +1,7 @@
 public class MarsRover {
+
     char direction;
+
     public MarsRover(int x, int y, char direction) {
         this.direction = direction;
     }
