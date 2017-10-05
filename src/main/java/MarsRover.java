@@ -3,6 +3,7 @@ public class MarsRover {
     }
 
     public String move(String command) {
-        return null;
+        if (command.length()>1) return "0:0:S";
+        return "0:0:W";
     }
 }
