@@ -13,7 +13,8 @@ public class MarsRoverShould {
     @Test
     @Parameters({
             "L, 0:0:W",
-            "LL, 0:0:S"
+            "LL, 0:0:S",
+            "LLL, 0:0:E"
     })
     public void turn_left(String commands, String finalPosition) {
         MarsRover marsRover = new MarsRover(0,0,'N');
