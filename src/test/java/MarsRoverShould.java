@@ -16,7 +16,7 @@ public class MarsRoverShould {
 
     @Before
     public void before(){
-        marsRover = new MarsRover(0,0,'N');
+        marsRover = new MarsRover(0,0, MarsRover.Direction.NORTH);
     }
 
     @Test

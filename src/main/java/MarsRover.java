@@ -1,8 +1,23 @@
 public class MarsRover {
 
-    char direction;
 
-    public MarsRover(int x, int y, char direction) {
+    public enum Direction {
+        NORTH("N"), EAST("E"), SOUTH("S"), WEST("W");
+
+        private final String value;
+
+        Direction(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
+
+    Direction direction;
+
+    public MarsRover(int x, int y, Direction direction) {
         this.direction = direction;
     }
 
@@ -15,33 +30,33 @@ public class MarsRover {
                 direction = turn_right();
             }
         }
-        return "0:0:"+ direction;
+        return "0:0:"+ direction.getValue();
     }
 
-    private char turn_right() {
-        if (direction == 'N'){
-            return 'E';
+    private Direction turn_right() {
+        if (direction == Direction.NORTH){
+            return Direction.EAST;
         }
-        if (direction == 'W'){
-            return 'N';
+        if (direction == Direction.WEST){
+            return Direction.NORTH;
         }
-        if (direction == 'S'){
-            return 'W';
+        if (direction == Direction.SOUTH){
+            return Direction.WEST;
         }
-        return 'S';
+        return Direction.SOUTH;
     }
 
-    private char turn_left() {
-        if (direction == 'N'){
-            return 'W';
+    private Direction turn_left() {
+        if (direction == Direction.NORTH){
+            return Direction.WEST;
         }
-        if (direction == 'W'){
-            return 'S';
+        if (direction == Direction.WEST){
+            return Direction.SOUTH;
         }
-        if (direction == 'S'){
-            return 'E';
+        if (direction == Direction.SOUTH){
+            return Direction.EAST;
         }
-        return 'N';
+        return Direction.NORTH;
     }
 
 
