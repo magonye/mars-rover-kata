@@ -42,41 +42,8 @@ public class MarsRover {
 
     public String move(String commands) {
         for(char command: commands.toCharArray()){
-            if (command=='L') {
-                direction = compass.turn('L');
-            }
-            if (command=='R') {
-                direction = compass.turn('R');
-            }
+            direction = compass.turn(command);
         }
         return "0:0:"+ direction.getValue();
     }
-
-    private Direction turn_right() {
-        if (direction == Direction.NORTH){
-            return Direction.EAST;
-        }
-        if (direction == Direction.WEST){
-            return Direction.NORTH;
-        }
-        if (direction == Direction.SOUTH){
-            return Direction.WEST;
-        }
-        return Direction.SOUTH;
-    }
-
-    private Direction turn_left() {
-        if (direction == Direction.NORTH){
-            return Direction.WEST;
-        }
-        if (direction == Direction.WEST){
-            return Direction.SOUTH;
-        }
-        if (direction == Direction.SOUTH){
-            return Direction.EAST;
-        }
-        return Direction.NORTH;
-    }
-
-
 }
