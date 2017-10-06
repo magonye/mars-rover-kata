@@ -11,7 +11,7 @@ public class Compass {
             }
         }
     }
-    
+
     public void turn(char side){
         if (side == 'R'){
             directionIndex = (directionIndex + 1)%4;
