@@ -1,20 +1,5 @@
 public class MarsRover {
 
-
-    public enum Direction {
-        NORTH("N"), EAST("E"), SOUTH("S"), WEST("W");
-
-        private final String value;
-
-        Direction(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
-
     public class Compass {
         private Direction[] space = {Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
 
