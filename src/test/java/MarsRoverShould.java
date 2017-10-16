@@ -62,6 +62,8 @@ public class MarsRoverShould {
     @Test
     @Parameters({
             "B, 9:0:N",
+            "BB, 8:0:N",
+            "BBBBBBBBBB, 0:0:N",
     })
     public void move_backward(String commands, String finalPosition) {
         assertThat(marsRover.move(commands), is(finalPosition));
