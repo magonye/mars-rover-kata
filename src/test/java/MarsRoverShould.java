@@ -16,7 +16,7 @@ public class MarsRoverShould {
 
     @Before
     public void before(){
-        marsRover = new MarsRover(0,0, Direction.NORTH);
+        marsRover = new MarsRover(0,0, Direction.NORTH, 10);
     }
 
     @Test
@@ -52,6 +52,8 @@ public class MarsRoverShould {
     @Test
     @Parameters({
             "F, 1:0:N",
+            "FF, 2:0:N",
+            "FFFFFFFFFF, 0:0:N",
     })
     public void move_foward(String commands, String finalPosition) {
         assertThat(marsRover.move(commands), is(finalPosition));
