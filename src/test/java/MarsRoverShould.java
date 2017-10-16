@@ -25,15 +25,27 @@ public class MarsRoverShould {
             "LL, 0:0:S",
             "LLL, 0:0:E",
             "LLLLLLLLLLLL, 0:0:N",
+    })
+    public void turn_left(String commands, String finalPosition) {
+        assertThat(marsRover.move(commands), is(finalPosition));
+    }
+    @Test
+    @Parameters({
             "R, 0:0:E",
             "RR, 0:0:S",
             "RRR, 0:0:W",
             "RRRRRRRRRRRR, 0:0:N",
+    })
+    public void turn_right(String commands, String finalPosition) {
+        assertThat(marsRover.move(commands), is(finalPosition));
+    }
+    @Test
+    @Parameters({
             "LRL, 0:0:W",
             "RLRLRLRLRLRL, 0:0:N",
 
     })
-    public void turn(String commands, String finalPosition) {
+    public void turn_left_and_right(String commands, String finalPosition) {
         assertThat(marsRover.move(commands), is(finalPosition));
     }
 
