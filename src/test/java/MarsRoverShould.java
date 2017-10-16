@@ -12,8 +12,7 @@ import static org.junit.Assert.assertThat;
 public class MarsRoverShould {
 
     private MarsRover marsRover;
-
-
+    
     @Before
     public void before(){
         marsRover = new MarsRover(0,0, Direction.NORTH, 10);
