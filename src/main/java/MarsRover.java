@@ -1,16 +1,28 @@
 public class MarsRover {
-    Compass compass;
-    int x;
-    int size;
+    Gps gps;
 
     public MarsRover(int x, int y, Direction direction, int size) {
-        compass = new Compass(direction);
-        this.x = x;
-        this.size = size;
+        gps = new Gps(x,y,size,direction);
     }
 
     public String move(String commands) {
         for(char command: commands.toCharArray()){
+            gps.move(command);
+        }
+        return gps.getCurrentPosition();
+    }
+
+    public class Gps {
+        int x;
+        int size;
+        Compass compass;
+        public Gps(int x, int y, int size, Direction direction) {
+            this.x = x;
+            this.size = size;
+            compass = new Compass(direction);
+        }
+
+        public void move(char command){
             compass.turn(command);
             if (command == 'F') {
                 this.x = (this.x +1)%this.size;
@@ -22,6 +34,9 @@ public class MarsRover {
                 }
             }
         }
-        return x+":0:"+ compass.getCurrentDirection().getValue();
+
+        public String getCurrentPosition(){
+            return x+":0:"+ compass.getCurrentDirection().getValue();
+        }
     }
 }
