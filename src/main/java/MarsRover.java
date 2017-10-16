@@ -15,6 +15,12 @@ public class MarsRover {
             if (command == 'F') {
                 this.x = (this.x +1)%this.size;
             }
+            if (command == 'B') {
+                this.x = (this.x -1);
+                if (this.x<0){
+                    this.x = this.size-1;
+                }
+            }
         }
         return x+":0:"+ compass.getCurrentDirection().getValue();
     }

@@ -55,8 +55,15 @@ public class MarsRoverShould {
             "FF, 2:0:N",
             "FFFFFFFFFF, 0:0:N",
     })
-    public void move_foward(String commands, String finalPosition) {
+    public void move_forward(String commands, String finalPosition) {
         assertThat(marsRover.move(commands), is(finalPosition));
     }
 
+    @Test
+    @Parameters({
+            "B, 9:0:N",
+    })
+    public void move_backward(String commands, String finalPosition) {
+        assertThat(marsRover.move(commands), is(finalPosition));
+    }
 }
