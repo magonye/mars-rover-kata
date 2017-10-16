@@ -49,4 +49,12 @@ public class MarsRoverShould {
         assertThat(marsRover.move(commands), is(finalPosition));
     }
 
+    @Test
+    @Parameters({
+            "F, 1:0:N",
+    })
+    public void move_foward(String commands, String finalPosition) {
+        assertThat(marsRover.move(commands), is(finalPosition));
+    }
+
 }
