@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 public class MarsRoverShould {
 
     private MarsRover marsRover;
-    
+
     @Before
     public void before(){
         marsRover = new MarsRover(0,0, Direction.NORTH, 10);
@@ -65,6 +65,15 @@ public class MarsRoverShould {
             "BBBBBBBBBB, 0:0:N",
     })
     public void move_backward(String commands, String finalPosition) {
+        assertThat(marsRover.move(commands), is(finalPosition));
+    }
+
+    @Test
+    @Parameters({
+            "LLF, 9:0:S",
+            "LF, 0:1:W",
+    })
+    public void move_turn_and_move(String commands, String finalPosition) {
         assertThat(marsRover.move(commands), is(finalPosition));
     }
 }
