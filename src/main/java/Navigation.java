@@ -1,10 +1,10 @@
-public class Gps {
+public class Navigation {
     int x;
     int y;
     int size;
     Compass compass;
 
-    public Gps(int x, int y, int size, Direction direction) {
+    public Navigation(int x, int y, int size, Direction direction) {
         this.x = x;
         this.y = y;
         this.size = size;
@@ -14,22 +14,17 @@ public class Gps {
     public void move(char command){
         compass.turn(command);
         if (command == 'F') {
-            if (compass.getCurrentDirection()==Direction.NORTH) {
-                this.x = (this.x + 1) % this.size;
-            } else if (compass.getCurrentDirection()==Direction.SOUTH) {
-                this.x = (this.size + (this.x - 1)) % this.size;
-            } else if (compass.getCurrentDirection()==Direction.WEST){
-                this.y = (this.y + 1) % this.size;
-            } else {
-                this.y = (this.size + (this.y -1)) % this.size;
-            }
+            this.x = (this.size + (this.x + compass.getCurrentDirection().getX())) % this.size;
+            this.y = (this.size + (this.y + compass.getCurrentDirection().getY())) % this.size;
         }
         if (command == 'B') {
-            this.x = (this.size + (this.x -1))% this.size;
+            this.x = (this.size + (this.x - compass.getCurrentDirection().getX())) % this.size;
+            this.y = (this.size + (this.y - compass.getCurrentDirection().getY())) % this.size;
         }
     }
 
     public String getCurrentPosition(){
-        return x+":"+y+":"+ compass.getCurrentDirection().getValue();
+        return String.format("%s:%s:%s",x, y , compass.getCurrentDirection().getValue());
     }
+
 }

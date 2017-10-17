@@ -1,15 +1,15 @@
 public class MarsRover {
-    Gps gps;
+    Navigation navigation;
 
     public MarsRover(int x, int y, Direction direction, int size) {
-        gps = new Gps(x,y,size,direction);
+        navigation = new Navigation(x,y,size,direction);
     }
 
     public String move(String commands) {
         for(char command: commands.toCharArray()){
-            gps.move(command);
+            navigation.move(command);
         }
-        return gps.getCurrentPosition();
+        return navigation.getCurrentPosition();
     }
 
 }

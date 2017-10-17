@@ -74,7 +74,7 @@ public class MarsRoverShould {
             "LF, 0:1:W",
             "LLLF, 0:9:E",
     })
-    public void move_turn_and_move(String commands, String finalPosition) {
+    public void move_turn_and_move_forward(String commands, String finalPosition) {
         assertThat(marsRover.move(commands), is(finalPosition));
     }
 }
