@@ -1,6 +1,8 @@
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
+import org.hamcrest.core.Is;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -76,5 +78,14 @@ public class MarsRoverShould {
     })
     public void move_turn_and_move_forward(String commands, String finalPosition) {
         assertThat(marsRover.move(commands), is(finalPosition));
+    }
+
+    @Test
+    @Parameters({
+            "FFF, O:2:0:N",
+    })
+    public void detect_an_obstacle_and_stop_and_report(String commands, String finalPosition) {
+        marsRover.addObstacle(new Position(3, 0));
+        Assert.assertThat(marsRover.move(commands), Is.is(finalPosition));
     }
 }
