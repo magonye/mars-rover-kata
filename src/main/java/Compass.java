@@ -13,14 +13,11 @@ public class Compass {
     }
 
     public void turn(char side){
-        if (side == 'R'){
-            directionIndex = (4+(directionIndex + 1))%4;
-        }
+        int factor = 1;
         if (side == 'L') {
-            directionIndex = directionIndex - 1;
-            if (directionIndex < 0)
-                directionIndex = 3;
+            factor = -1;
         }
+            directionIndex = (4+directionIndex + 1 *factor)%4;
     }
 
     public Direction getCurrentDirection(){
