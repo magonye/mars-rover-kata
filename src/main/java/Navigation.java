@@ -18,8 +18,10 @@ public class Gps {
                 this.x = (this.x + 1) % this.size;
             } else if (compass.getCurrentDirection()==Direction.SOUTH) {
                 this.x = (this.size + (this.x - 1)) % this.size;
-            } else {
+            } else if (compass.getCurrentDirection()==Direction.WEST){
                 this.y = (this.y + 1) % this.size;
+            } else {
+                this.y = (this.size + (this.y -1)) % this.size;
             }
         }
         if (command == 'B') {

@@ -72,6 +72,7 @@ public class MarsRoverShould {
     @Parameters({
             "LLF, 9:0:S",
             "LF, 0:1:W",
+            "LLLF, 0:9:E",
     })
     public void move_turn_and_move(String commands, String finalPosition) {
         assertThat(marsRover.move(commands), is(finalPosition));
