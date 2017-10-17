@@ -12,19 +12,24 @@ public class Navigation {
     }
 
     public void move(char command){
-        compass.turn(command);
-        if (command == 'F') {
-            this.x = (this.size + (this.x + compass.getCurrentDirection().getX())) % this.size;
-            this.y = (this.size + (this.y + compass.getCurrentDirection().getY())) % this.size;
-        }
-        if (command == 'B') {
-            this.x = (this.size + (this.x - compass.getCurrentDirection().getX())) % this.size;
-            this.y = (this.size + (this.y - compass.getCurrentDirection().getY())) % this.size;
+        if (isTurning(command)) compass.turn(command);
+        if (!isTurning(command)) {
+            int factor = 1;
+            if (command == 'B') {
+                factor = -1;
+            }
+            this.x = (this.size + (this.x + factor * compass.getCurrentDirection().getX())) % this.size;
+            this.y = (this.size + (this.y + factor * compass.getCurrentDirection().getY())) % this.size;
+
         }
     }
 
     public String getCurrentPosition(){
         return String.format("%s:%s:%s",x, y , compass.getCurrentDirection().getValue());
+    }
+
+    private boolean isTurning(char movement){
+        return movement== 'L' || movement== 'R';
     }
 
 }

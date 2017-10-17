@@ -14,7 +14,7 @@ public class Compass {
 
     public void turn(char side){
         if (side == 'R'){
-            directionIndex = (directionIndex + 1)%4;
+            directionIndex = (4+(directionIndex + 1))%4;
         }
         if (side == 'L') {
             directionIndex = directionIndex - 1;
