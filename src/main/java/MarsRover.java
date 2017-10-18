@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class MarsRover {
     Navigation navigation;
 
@@ -18,5 +20,9 @@ public class MarsRover {
 
     public void addObstacle(Position obstacle) {
         navigation.setObstacle(obstacle);
+    }
+
+    public void addObstacles(List<Position> obstacles) {
+        navigation.setObstacles(obstacles);
     }
 }

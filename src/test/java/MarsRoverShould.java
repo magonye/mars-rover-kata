@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
@@ -85,7 +86,7 @@ public class MarsRoverShould {
             "FFF, O:2:0:N",
     })
     public void detect_an_obstacle_and_stop_and_report(String commands, String finalPosition) {
-        marsRover.addObstacle(new Position(3, 0));
+        marsRover.addObstacles(Arrays.asList(new Position(3, 0)));
         Assert.assertThat(marsRover.move(commands), Is.is(finalPosition));
     }
 }

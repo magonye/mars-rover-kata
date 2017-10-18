@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Navigation {
     int size;
     Compass compass;
@@ -5,10 +8,13 @@ public class Navigation {
     boolean collision;
     Position position;
 
+    List<Position> obstacles;
+
     public Navigation(int x, int y, int size, Direction direction) {
         this.position = new Position(x,y);
         this.size = size;
         compass = new Compass(direction);
+        obstacles = new ArrayList<>();
     }
 
     public void move(char command){
@@ -23,7 +29,7 @@ public class Navigation {
             int newY = (this.size + (this.position.getY() + factor * compass.getCurrentDirection().getY())) % this.size;
 
             Position newPosition = new Position(newX, newY);
-            if (newPosition.equals(obstacle)){
+            if (obstacles.contains(newPosition)){
                 collision = true;
             } else {
                 this.position = new Position(newPosition.getX(),newPosition.getY());
@@ -45,5 +51,9 @@ public class Navigation {
 
     public boolean isCollision() {
         return collision;
+    }
+
+    public void setObstacles(List<Position> obstacles) {
+        this.obstacles = obstacles;
     }
 }
