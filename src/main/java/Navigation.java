@@ -17,22 +17,27 @@ public class Navigation {
         if (isTurningMovement(command)) {
             compass.turn(command);
         } else {
-            int factor = 1;
-            if (command == 'B') {
-                factor = -1;
-            }
-            int newX = calculateNewPositionValue(this.position.getX(),compass.getCurrentDirection().getX(),factor);
-            int newY = calculateNewPositionValue(this.position.getY(),compass.getCurrentDirection().getY(),factor);
 
-            Position newPosition = new Position(newX, newY);
+            Position newPosition = calculateNewPosition(this.position,compass.getCurrentDirection(), command);
             collisionDetection.checkCollision(newPosition);
 
             if (!collisionDetection.isCollision()){
-                this.position = new Position(newPosition.getX(),newPosition.getY());
+                this.position = newPosition;
             }
         }
     }
 
+    private Position calculateNewPosition(Position position,Direction direction, char command){
+        int factor = 1;
+        if (command == 'B') {
+            factor = -1;
+        }
+        int newX = calculateNewPositionValue(position.getX(),direction.getX(),factor);
+        int newY = calculateNewPositionValue(position.getY(),direction.getY(),factor);
+
+        return new Position(newX, newY);
+
+    }
     private int calculateNewPositionValue(int position, int acumulation, int factor){
         return (this.size + (position + factor * acumulation)) % this.size;
     }
