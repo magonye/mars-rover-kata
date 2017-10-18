@@ -30,8 +30,8 @@ public class Navigation {
         }
     }
 
-    public String getCurrentPosition(){
-        return String.format("%s%s:%s:%s",this.collision?"O:":"",position.getX(), position.getY() , compass.getCurrentDirection().getValue());
+    public String printCurrentStatus(){
+        return StatusPrinter.printCurrentStatus(position, collision, compass.getCurrentDirection());
     }
 
     private boolean isTurning(char movement){

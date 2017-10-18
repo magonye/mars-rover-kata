@@ -13,7 +13,7 @@ public class MarsRover {
                 break;
             }
         }
-        return navigation.getCurrentPosition();
+        return navigation.printCurrentStatus();
     }
 
     public void addObstacle(Position obstacle) {
