@@ -18,10 +18,6 @@ public class MarsRover {
         return navigation.printCurrentStatus();
     }
 
-    public void addObstacle(Position obstacle) {
-        navigation.setObstacle(obstacle);
-    }
-
     public void addObstacles(List<Position> obstacles) {
         navigation.setObstacles(obstacles);
     }
