@@ -12,8 +12,9 @@ public class Navigation {
     }
 
     public void move(char command){
-        if (isTurning(command)) compass.turn(command);
-        if (!isTurning(command)) {
+        if (isTurningMovement(command)) {
+            compass.turn(command);
+        } else {
             int factor = 1;
             if (command == 'B') {
                 factor = -1;
@@ -34,7 +35,7 @@ public class Navigation {
         return StatusPrinter.printCurrentStatus(position, collision, compass.getCurrentDirection());
     }
 
-    private boolean isTurning(char movement){
+    private boolean isTurningMovement(char movement){
         return movement== 'L' || movement== 'R';
     }
 
