@@ -21,8 +21,8 @@ public class Navigation {
             if (command == 'B') {
                 factor = -1;
             }
-            int newX = (this.size + (this.position.getX() + factor * compass.getCurrentDirection().getX())) % this.size;
-            int newY = (this.size + (this.position.getY() + factor * compass.getCurrentDirection().getY())) % this.size;
+            int newX = calculateNewPositionValue(this.position.getX(),compass.getCurrentDirection().getX(),factor);
+            int newY = calculateNewPositionValue(this.position.getY(),compass.getCurrentDirection().getY(),factor);
 
             Position newPosition = new Position(newX, newY);
             collisionDetection.checkCollision(newPosition);
@@ -31,6 +31,10 @@ public class Navigation {
                 this.position = new Position(newPosition.getX(),newPosition.getY());
             }
         }
+    }
+
+    private int calculateNewPositionValue(int position, int acumulation, int factor){
+        return (this.size + (position + factor * acumulation)) % this.size;
     }
 
     public String printCurrentStatus(){
