@@ -84,6 +84,7 @@ public class MarsRoverShould {
     @Test
     @Parameters({
             "FFF, O:2:0:N",
+            "FFLFRFFRFRF, O:4:0:S",
     })
     public void detect_an_obstacle_and_stop_and_report(String commands, String finalPosition) {
         marsRover.addObstacles(Arrays.asList(new Position(3, 0)));
