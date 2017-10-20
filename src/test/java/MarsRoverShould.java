@@ -90,4 +90,21 @@ public class MarsRoverShould {
         marsRover.addObstacles(Arrays.asList(new Position(3, 0)));
         Assert.assertThat(marsRover.move(commands), Is.is(finalPosition));
     }
+
+
+    @Test
+    @Parameters({
+            "FFLFFFFRFFFFLFFFFFRFLFFFLFFFFFF, O:2:2:S",
+    })
+    public void travel_arround_the_planet(String commands, String finalPosition) {
+        marsRover.addObstacles(Arrays.asList(new Position(3, 0),
+                new Position(1 ,2),
+                new Position(5, 3),
+                new Position(2, 5),
+                new Position(7, 5),
+                new Position(5, 8),
+                new Position(8, 9)
+        ));
+        Assert.assertThat(marsRover.move(commands), Is.is(finalPosition));
+    }
 }
